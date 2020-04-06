@@ -30,5 +30,5 @@ const {areaFunction} = require('./square.js');
 console.log(areaFunction(7));
 
 //Object Destructuring way 2
-const {area} = require('./square.js');
-console.log(area(7));
+const square = require('./square.js');
+console.log(square.areaFunction(7));
