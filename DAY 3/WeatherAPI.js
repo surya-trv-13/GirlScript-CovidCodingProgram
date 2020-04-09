@@ -9,6 +9,7 @@ var weatherApi = (latititude , longitude , callback)=> {
     }, (error , response , body) => {   
         if(error){
             callback(error, undefined);
+            // callback();
         }else if(response.statusCode === 200){
             callback(undefined , {
                 temp : body.currently.apparentTemperature

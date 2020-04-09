@@ -22,6 +22,7 @@ geoLocation.geoCode(argv.a , (error , result) => {
         
     }else{
         //console.log(result);
+        //Callback Chaining
         WeatherAPI.weatherApi(result.latitude , result.longitude , (err , res) =>{
             if(err){
                 console.log(err);
