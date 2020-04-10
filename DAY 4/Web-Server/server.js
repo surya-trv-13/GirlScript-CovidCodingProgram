@@ -1,7 +1,7 @@
-var express = require('express');
+var app = require('express')();
 var hbs = require('hbs');
 
-var app = express();
+// var app = express();
 app.set('view engine', 'hbs');
 
 //Registering the partials
@@ -20,17 +20,17 @@ app.use((req , res , next) =>{
     console.log(`${new Date().toString()} : ${req.method} ${req.url}`);
     next();
 });
-app.get('*', (req , res) => {
-    res.render('404' , {
-        headPart:'PAge not Found',
-        paraPart : 'Check Other Routes'
-    })
-});
+// app.get('*', (req , res) => {
+//     res.render('404' , {
+//         headPart:'PAge not Found',
+//         paraPart : 'Check Other Routes'
+//     })
+// });
 app.use((req , res , next) => {
-    res.render('maintain.hbs');
+    // res.render('maintain.hbs');
 });
 
-app.use(express.static(__dirname + '/public'));
+app.use(require('express').static(__dirname + '/public'));
 app.get('/' ,(req ,res) => {
     res.render('Master.hbs' , {
         headPart : 'HOME PAGE',
