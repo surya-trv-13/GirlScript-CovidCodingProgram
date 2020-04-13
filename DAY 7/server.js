@@ -3,11 +3,20 @@
  var {ObjectID} = require('mongodb');
  var express = require('express');
  var bodyParser = require('body-parser');
+ var hbs = require('hbs');
 
  var app = express();
+ app.use(express.static(__dirname+'/public'));
  app.use(bodyParser.json());//
+ app.set('view engine' , 'hbs');
 
  //POST /profile
+ app.get('/' , (req,res) => {
+    res.render('index' , {
+        title : 'Sample APP'
+    });
+});
+
  app.post('/profile' , (req , res) => {
     var profile = new Profile({
         name : req.body.name,
