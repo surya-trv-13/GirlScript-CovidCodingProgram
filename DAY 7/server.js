@@ -23,8 +23,8 @@
         age : req.body.age
     });
 
-    profile.save().then((result) => {
-        res.status(200).send({result});
+    profile.save().then((response) => {
+        res.status(200).send({response});
         
     }, (error) => {
         res.status(400).send({error});
@@ -34,8 +34,8 @@
 
  // GET /profile
  app.get('/profile' , (req, res) => {
-   Profile.find().then((result) => {
-       res.status(200).send({result});
+   Profile.find().then((response) => {
+       res.status(200).send({response});
    }, (error) => {
         res.status(404).send({error});
    });
