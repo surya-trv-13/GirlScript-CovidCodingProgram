@@ -68,7 +68,10 @@ formGet.addEventListener('submit', (e) => {
                     li.appendChild(document.createTextNode(name +" "+ age));
                     var span = document.createElement('span');
                     span.innerHTML = "X";
-                    span.onclick = e => {deleteProfile(_id)};
+                    span.onclick = e => {
+                        deleteProfile(_id);
+                        li.remove();
+                    };
                     li.appendChild(span);
                     ul.appendChild(li);
                 });

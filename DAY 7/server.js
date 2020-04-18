@@ -4,6 +4,7 @@
  var express = require('express');
  var bodyParser = require('body-parser');
  var hbs = require('hbs');
+ var multer = require('multer');
 
  var app = express();
  app.use(express.static(__dirname+'/public'));
@@ -78,7 +79,28 @@ app.delete('/profile/:id' , (req, res) => {
     });
 });
 
+var upload = multer({
+    dest : 'avatars',
+    limits : {
+        fileSize : 20000000
+    },
+    fileFilter(req , file , callback) {
+        if(!file.originalname.match(/\.(gltf|glb|obj)$/)){
+            callback(new Error('Please Upload Image'));
+        }
+        callback(undefined , true);
+        
+        // if(!file.originalname.endsWith('.jpg')){}
 
+        // callback(new Error('Please uplaod Image'));
+        // callback(undefined , true); 
+        // callback(undefined , false);
+    }
+});
+
+app.post('/upload' ,upload.single('profilePic') , (req,res)=>{
+    res.send();
+});
 
  app.listen(3100 , () => {
     console.log('Server is running on port 3100');
