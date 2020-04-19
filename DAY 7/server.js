@@ -100,6 +100,8 @@ var upload = multer({
 
 app.post('/upload' ,upload.single('profilePic') , (req,res)=>{
     res.send();
+} , (error , req , res , next) => { // This function will handle unCaught errors on Express
+    res.status(400).send({error : error.message});
 });
 
  app.listen(3100 , () => {

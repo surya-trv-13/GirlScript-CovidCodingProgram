@@ -8,7 +8,7 @@ var ul = document.querySelector('ul');
 
 var ulTag  = document.querySelector('ul');
 
-const URL = 'http://localhost:3100/profile';
+const URL = '/profile';
 
 //Delete Profile ...
 var deleteProfile = (id) => {
